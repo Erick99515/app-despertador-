@@ -22,6 +22,10 @@ jobs:
           npx cap add android
           python3 fonte/preparar.py
           npx cap sync android
+      - name: Chave de assinatura fixa
+        run: |
+          mkdir -p ~/.android
+          cp fonte/debug.keystore ~/.android/debug.keystore
       - name: Compilar
         run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
